@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="rtl">
+<html dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -132,30 +132,24 @@
                         </ul>
                     </li>
 
-                    {{--<!-- Tasks: style can be found in dropdown.less -->--}}
                     <li class="dropdown tasks-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-flag-o"></i></a>
                         <ul class="dropdown-menu">
                             <li>
-                                {{--<!-- inner menu: contains the actual data -->--}}
                                 <ul class="menu">
-
-                                    {{--@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)--}}
-                                        {{--<li>--}}
-                                            {{--<a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">--}}
-                                                {{--{{ $properties['native'] }}--}}
-                                            {{--</a>--}}
-                                        {{--</li>--}}
-                                    {{--@endforeach--}}
-
+                                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                        <li>
+                                            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                {{ $properties['native'] }}
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </li>
                         </ul>
                     </li>
 
-                    {{--<!-- User Account: style can be found in dropdown.less -->--}}
                     <li class="dropdown user user-menu">
-
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ asset('dashboard/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
                             <span class="hidden-xs">Ahmed Hassan</span>
@@ -193,7 +187,7 @@
     </header>
 
     @include('layouts.dashboard._aside')
-    
+
     @yield('content')
 
     @include('partials._session')
