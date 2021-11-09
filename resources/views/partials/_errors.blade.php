@@ -1,7 +1,3 @@
 @if ($errors->any())
-    <div class="alert alert-danger">
-        @foreach ($errors->all() as $error)
-            <p>{{ $error }}</p>
-        @endforeach
-    </div>
+    <div class="error text-danger text-bold">{{ $errors->first($name) }}</div>
 @endif

@@ -48,7 +48,6 @@
     {{--html in  ie--}}
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 
@@ -152,7 +151,7 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ asset('dashboard/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-                            <span class="hidden-xs">Ahmed Hassan</span>
+                            <span class="hidden-xs">{{auth()->user()->first_name.' '.auth()->user()->last_name}}</span>
                         </a>
                         <ul class="dropdown-menu">
 
@@ -161,7 +160,7 @@
                                 <img src="{{ asset('dashboard/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 
                                 <p>
-                                    Ahmed Hassan
+                                    {{auth()->user()->first_name.' '.auth()->user()->last_name}}
                                     <small>Member since 2 days</small>
                                 </p>
                             </li>
@@ -214,7 +213,9 @@
 
 {{--<!-- AdminLTE App -->--}}
 <script src="{{ asset('dashboard/js/adminlte.min.js') }}"></script>
-
+{{--  sweat alert  --}}
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
 
 <script>
     $(document).ready(function () {
@@ -233,9 +234,11 @@
             e.preventDefault();
 
             var n = new Noty({
-                text: "@lang('site.confirm_delete')",
-                type: "warning",
+                text: "@lang('site.message_confirm')",
                 killer: true,
+                theme:'metroui',
+                layout:'topRight',
+                timeout:2000,
                 buttons: [
                     Noty.button("@lang('site.yes')", 'btn btn-success mr-2', function () {
                         that.closest('form').submit();
