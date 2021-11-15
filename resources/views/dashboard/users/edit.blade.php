@@ -18,7 +18,7 @@
                 <div class="box box-warning" style="padding-top: 20px">
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form action="{{route('dashboard.users.update',$user->id)}}" method="POST">
+                        <form action="{{route('dashboard.users.update',$user->id)}}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             @method('put')
                             <!-- text input -->
@@ -40,6 +40,16 @@
                                 @include('partials._errors',['name'=>'email'])
                             </div>
 
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">@lang('site.image')</label>
+                                <input type="file" class="form-control" name="image" id="imgInp">
+                                @include('partials._errors',['name'=>'image'])
+                            </div>
+
+                            <div class="form-group">
+                                <img src="{{$user->image_path}}" class="img-thumbnail" style="width: 100px" id="blah">
+                            </div>
+
                             {{--  start permition  --}}
                             <label for="exampleInputPassword1">@lang('site.permition')</label>
 
@@ -58,11 +68,12 @@
                                 @foreach ($models as $index=>$model)
                                     <div class="tab-pane {{$index == 0 ? 'active' : ''}}" id="{{$model}}">
                                         @foreach ($CRUDs as $CRUD)
-                                            <label><input type="checkbox" {{$user->hasPermission($CRUD.'_'.$model)?'checked':''}} name="psermition[]" value="{{$CRUD.'_'.$model}}"> @lang('site.'.$CRUD)</label>
+                                            <label><input type="checkbox" {{$user->hasPermission($CRUD.'_'.$model)?'checked':''}} name="permissions[]" value="{{$CRUD.'_'.$model}}"> @lang('site.'.$CRUD)</label>
                                         @endforeach
                                     </div>
                                 @endforeach
                                 </div>
+                                @include('partials._errors',['name'=>'permissions'])
                             </div>
                             {{--  end permition  --}}
                             <button type="submit" class="btn btn-primary">@lang('site.save')</button>

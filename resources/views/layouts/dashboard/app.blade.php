@@ -226,13 +226,10 @@
             checkboxClass: 'icheckbox_minimal-blue',
             radioClass: 'iradio_minimal-blue'
         });
-
+        //sweet alert delete
         $('.delete').click(function (e) {
-
             var that = $(this)
-
             e.preventDefault();
-
             var n = new Noty({
                 text: "@lang('site.message_confirm')",
                 killer: true,
@@ -243,16 +240,21 @@
                     Noty.button("@lang('site.yes')", 'btn btn-success mr-2', function () {
                         that.closest('form').submit();
                     }),
-
                     Noty.button("@lang('site.no')", 'btn btn-primary mr-2', function () {
                         n.close();
                     })
                 ]
             });
-
             n.show();
+        });//end sweet alert
 
-        });//end of delete
+        //show image after choess
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files
+            if (file) {
+            blah.src = URL.createObjectURL(file)
+            }
+        }//end show image after choess
 
     })
 

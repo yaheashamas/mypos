@@ -14,8 +14,10 @@ return [
     'first_name' => 'الاسم الاول',
     'last_name' => 'الاسم الاخير',
     'email' => 'البريد الالكتروني',
+    'image' => 'صورة',
     'password' => 'كلمة السر',
     'password_confirmation' => 'تاكيد كلمة السر',
+    'permissions' => 'السماحيات',
     //auction
     'active' => 'الانشطة',
     'add' => 'اضافة',

@@ -28,6 +28,8 @@ class UserRequest extends FormRequest
             'last_name' => 'Required',
             'email' => 'Email',
             'password_confirmation' => 'Required',
+            'image' => 'image|mimes:jpeg,jpg,png,gif|max:10000',
+            'permissions' => 'Required|min:1'
         ];
     }
 }

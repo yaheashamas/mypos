@@ -38,6 +38,7 @@
                                     <th>@lang('site.first_name')</th>
                                     <th>@lang('site.last_name')</th>
                                     <th>@lang('site.email')</th>
+                                    <th>@lang('site.image')</th>
                                     <th>@lang('site.active')</th>
                                 </tr>
                                 @foreach ($users as $index=>$user)
@@ -46,6 +47,7 @@
                                         <td>{{$user->first_name}}</td>
                                         <td>{{$user->last_name}}</td>
                                         <td>{{$user->email}}</td>
+                                        <td><img src="{{$user->image_path}}" alt="" style="width: 100px" class="img-thumbnail"></td>
                                         <td>
                                             @if (auth()->user()->hasPermission('update_users'))
                                                 <form action="{{route('dashboard.users.edit',$user->id)}}" class="inline">

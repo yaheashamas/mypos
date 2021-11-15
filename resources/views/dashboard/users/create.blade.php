@@ -22,7 +22,7 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form action="{{route('dashboard.users.store')}}" method="POST">
+                    <form action="{{route('dashboard.users.store')}}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="box-body">
 
@@ -42,6 +42,16 @@
                                 <label for="exampleInputPassword1">@lang('site.email')</label>
                                 <input type="email" class="form-control" name="email">
                                 @include('partials._errors',['name'=>'email'])
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">@lang('site.image')</label>
+                                <input type="file" class="form-control" name="image" id="imgInp">
+                                @include('partials._errors',['name'=>'image'])
+                            </div>
+
+                            <div class="form-group">
+                                <img src="{{ asset('uploads/imageUsers/default.png')}}" class="img-thumbnail" style="width: 100px" id="blah">
                             </div>
 
                             <div class="form-group">
@@ -74,11 +84,12 @@
                                 @foreach ($models as $index=>$model)
                                     <div class="tab-pane {{$index == 0 ? 'active' : ''}}" id="{{$model}}">
                                         @foreach ($CRUDs as $CRUD)
-                                            <label><input type="checkbox" name="psermition[]" value="{{$CRUD.'_'.$model}}"> @lang('site.'.$CRUD)</label>
+                                            <label><input type="checkbox" name="permissions[]" value="{{$CRUD.'_'.$model}}"> @lang('site.'.$CRUD)</label>
                                         @endforeach
                                     </div>
                                 @endforeach
                                 </div>
+                                @include('partials._errors',['name'=>'permissions'])
                             </div>
                             {{--  end permition  --}}
                         </div>

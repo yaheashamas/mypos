@@ -8,11 +8,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepository;
+use App\Traits\imagable;
 use Illuminate\Support\Facades\Hash;
 
 class userController extends Controller
 {
     private $userRepository;
+    use imagable;
 
     public function __construct(UserRepository $userRepository)
     {
@@ -26,7 +28,6 @@ class userController extends Controller
     public function index(Request $request)
     {
         $users = $this->userRepository->search('admin',$request->search,'first_name','last_name');
-        // $users = $this->userRepository->all();
         return view('dashboard.users.index',compact('users'));
     }//end of index
 
@@ -37,23 +38,22 @@ class userController extends Controller
 
     public function store(UserRequest $request)
     {
-        $array = [
+        $info = [
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
-            'password' => Hash::make($request->password_confirmation),
+            'password' => Hash::make($request->password_confirmation)
         ];
-        $user = $this->userRepository->create($array);
+        if (!empty($request->file('image'))) {
+            $nameImage = $this->createImage($request->image,'imageUsers/');
+            $info['image']=$nameImage;
+        }
+        $user = $this->userRepository->create($info);
         $user->attachRole('admin');
-        $user->syncPermissions($request->psermition);
+        $user->syncPermissions($request->permissions);
         session()->flash('success',__('site.message_add'));
         return redirect()->back();
-    }
-
-    public function show(User $user)
-    {
-        //
-    }
+    }//end of store
 
     public function edit(User $user)
     {
@@ -63,19 +63,28 @@ class userController extends Controller
 
     public function update(UserUpdateRequest $request ,User $user)
     {
-        $array = [
+        $info = [
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
         ];
-        $user = $this->userRepository->updateById($user->id,$array);
-        $user->syncPermissions($request->psermition);
+        if (!empty($request->file('image'))) {
+            $this->deleteImage('imageUsers/',$user->image);
+            $nameImage = $this->createImage($request->image,'imageUsers/');
+            $info['image']=$nameImage;
+        }
+
+        $user = $this->userRepository->updateById($user->id,$info);
+        $user->syncPermissions($request->permissions);
         session()->flash('success',__('site.message_update'));
         return redirect()->route('dashboard.users.index');
     }
 
     public function destroy(User $user)
     {
+        if ($user->image != 'default.png') {
+            $this->deleteImage("imageUsers/",$user->image);
+        }
         $this->userRepository->deleteById($user->id);
         session()->flash('success',__('site.message_delete'));
         return redirect()->route('dashboard.users.index');

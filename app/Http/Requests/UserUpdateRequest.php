@@ -27,6 +27,8 @@ class UserUpdateRequest extends FormRequest
             'first_name' => 'Required',
             'last_name' => 'Required',
             'email' => 'Email',
+            'image' => 'image|mimes:jpeg,jpg,png,gif|max:10000',
+            'permissions' => 'Required|min:1'
         ];
     }
 }
