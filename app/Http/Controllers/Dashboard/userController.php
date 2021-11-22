@@ -52,7 +52,7 @@ class userController extends Controller
         $user->attachRole('admin');
         $user->syncPermissions($request->permissions);
         session()->flash('success',__('site.message_add'));
-        return redirect()->back();
+        return redirect()->route('dashboard.users.index');
     }//end of store
 
     public function edit(User $user)

@@ -7,5 +7,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
     Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(function() {
         Route::get('/index', 'DashboardController@index')->name('index');
         Route::resource('users', 'UserController')->except('show');
+        Route::resource('categories', 'CategoryController')->except('show');
     });//end of dashboard routes
 });
