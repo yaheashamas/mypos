@@ -39,12 +39,16 @@
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>@lang('site.name')</th>
+                                <th>@lang('site.count_products')</th>
+                                <th>@lang('site.view_products')</th>
                                 <th>@lang('site.active')</th>
                             </tr>
                             @foreach ($categories as $index=>$category)
                                 <tr>
                                     <td>{{$index + 1 }}</td>
                                     <td>{{$category->name}}</td>
+                                    <td>{{$category->products->count()}}</td>
+                                    <td><a href="{{route('dashboard.products.index',['category_id'=>$category->id])}}" class="btn btn-info" {{$category->products->count() >0 ? "" : "disabled"}}><i class="fa fa-eye"> @lang('site.read')</i></a></td>
                                     <td>
                                         @if (auth()->user()->hasPermission('update_categories'))
                                             <form action="{{route('dashboard.categories.edit',$category->id)}}" class="inline">

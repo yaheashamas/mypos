@@ -5,11 +5,11 @@
     <div class="content-wrapper">
 
         <section class="content-header">
-            <h1>@lang('site.edit_user')</h1>
+            <h1>@lang('site.update_category')</h1>
             <ol class="breadcrumb">
                 <li><a href="{{route('dashboard.index')}}">@lang('site.dashboard')</a></li>
                 <li><a href="{{route('dashboard.categories.index')}}">@lang('site.categories')</a></li>
-                <li><b>@lang('site.edit_user')</b></li>
+                <li><b>@lang('site.update_category')</b></li>
             </ol>
         </section>
 

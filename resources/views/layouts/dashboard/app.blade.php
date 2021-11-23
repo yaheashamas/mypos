@@ -216,16 +216,22 @@
 {{--  sweat alert  --}}
 <script src="sweetalert2.min.js"></script>
 <link rel="stylesheet" href="sweetalert2.min.css">
+{{-- ckeditor --}}
+<script src="{{ asset('dashboard/plugins/ckeditor/ckeditor.js') }}"></script>
 
 <script>
     $(document).ready(function () {
         $('.sidebar-menu').tree();
+
+        //change language in ckeditor
+        CKEDITOR.config.language = "{{app()->getLocale()}}";
 
         //icheck
         $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
             checkboxClass: 'icheckbox_minimal-blue',
             radioClass: 'iradio_minimal-blue'
         });
+
         //sweet alert delete
         $('.delete').click(function (e) {
             var that = $(this)
@@ -254,11 +260,9 @@
             if (file) {
             blah.src = URL.createObjectURL(file)
             }
-        }//end show image after choess
+        };//end show image after choess
 
-    })
-
-
+    });//end cosument reade
 </script>
 </body>
 </html>

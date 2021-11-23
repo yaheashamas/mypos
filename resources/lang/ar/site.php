@@ -44,15 +44,30 @@ return [
     'no' => 'لا',
     //____________category____________
     //title
-    'categories'=>'الاصناف',
-    'create_category'=>'اضافة صنف',
+    'categories'=>'الاقسام',
+    'allCategory' => 'كل الاقسام',
+    'category'=>'القسم',
+    'create_category'=>'اضافة قسم',
+    'update_category'=>'تعديل قسم',
+    'count_products'=>'عدد المنتجات',
+    'view_products'=>'عرض المنتجات',
     //info
     'name'=>'الاسم',
+    //____________Product_____________
+    //title
+    'products' => 'المنتجات',
+    'edit_product' => 'تعديل منتج',
+    'discription' => 'الوصف',
+    'purchase_price' => 'سعر الشراء',
+    'sale_price' => 'سعر البيع',
+    'stock' => 'المخزن',
     //____________Translat___________
     'ar' => [
-        'name' => 'الاسم بلغة العربية'
+        'name' => 'الاسم بلغة العربية',
+        'description' => 'الوصف بلغة العربية'
     ],
     'en' => [
-        'name' => 'الاسم بلغة الانكليزية'
+        'name' => 'الاسم بلغة الانكليزية',
+        'description' => 'الوصف بلغة الانكليزية'
     ],
 ];

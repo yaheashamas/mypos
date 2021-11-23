@@ -15,7 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('image')->default('default_product.png');
+            $table->string('image')->default('default.png');
             $table->double('purchase_price',8,2);
             $table->double('sale_price',8,2);
             $table->integer('stock');
