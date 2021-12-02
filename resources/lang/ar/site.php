@@ -60,7 +60,24 @@ return [
     'discription' => 'الوصف',
     'purchase_price' => 'سعر الشراء',
     'sale_price' => 'سعر البيع',
+    'price'=> 'السعر',
     'stock' => 'المخزن',
+    'total' => 'المحموع',
+    //____________Start clients_____________
+    //title
+    'clients' => 'العملاء',
+    'client' => 'العميل',
+    'create_client'=>'اضافة عميل',
+    'update_client'=>'تعديل عميل',
+    'phone' => 'رقم الجوال',
+    'address' => 'السكن',
+    //____________start orders____________
+    'orders' => 'الطلبات',
+    'add_order' => 'اضافة طلب',
+    'quantity' => 'الكمية',
+    'add_order' => 'اضافة طلب',
+    //____________end orders____________
+    //____________end clients_____________
     //____________Translat___________
     'ar' => [
         'name' => 'الاسم بلغة العربية',

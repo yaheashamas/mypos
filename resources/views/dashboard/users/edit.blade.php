@@ -57,7 +57,7 @@
                             <label for="exampleInputPassword1">@lang('site.permition')</label>
 
                             <?php
-                                $models = ['users','category','products'];
+                            $models = ['users','categories','products','clients','orders'];
                                 $CRUDs = ['create','read','update','delete'];
                             ?>
 

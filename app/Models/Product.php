@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\models\Order;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -18,5 +19,8 @@ class Product extends Model
 
     public function getImagePathAttribute(){
         return asset('uploads/imageProduct/'.$this->image);
+    }
+    public function orders(){
+        return $this->belongsToMany(Order::class,'product_order');
     }
 }

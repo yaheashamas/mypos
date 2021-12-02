@@ -213,11 +213,19 @@
 
 {{--<!-- AdminLTE App -->--}}
 <script src="{{ asset('dashboard/js/adminlte.min.js') }}"></script>
+
 {{--  sweat alert  --}}
 <script src="sweetalert2.min.js"></script>
 <link rel="stylesheet" href="sweetalert2.min.css">
+
 {{-- ckeditor --}}
 <script src="{{ asset('dashboard/plugins/ckeditor/ckeditor.js') }}"></script>
+
+{{-- custom js --}}
+<script src="{{asset('dashboard/js/custom/order.js')}}"></script>
+
+{{-- jquery --}}
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 
 <script>
     $(document).ready(function () {
