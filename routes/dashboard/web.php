@@ -8,17 +8,23 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
         //dashboard
         Route::get('/index', 'DashboardController@index')->name('index');
 
-        //routes category
+        //category
         Route::resource('categories', 'CategoryController')->except('show');
 
-        //routes products
+        //products
         Route::resource('products', 'ProductController')->except('show');
 
-        //routes clients
+        //clients
         Route::resource('clients', 'ClientController')->except('show');
         Route::resource('client.orders', 'client\OrderController')->except('show');
 
-        //routes users
+
+        //order
+        Route::resource('orders', 'OrderController');
+        Route::get('/orders/{order}/products', 'OrderController@products')->name('orders.products');
+        Route::get('/clients/{client}/orders/{order}','OrderController@edit')->name('clients.orders.edit');
+
+        //users
         Route::resource('users', 'UserController')->except('show');
 
     });//end of dashboard routes

@@ -19,7 +19,7 @@ $(document).ready(function(){
                 <td>${name}</td>
                 <td>
                     <div class="input-group input-group-sm mb-3">
-                        <input type="number" min='1' max='100' value="1" data-price=${price} class="form-control mb-3 product-quantities" name="quantities[]">
+                        <input type="number" name="quantities[]" min='1' max='100' value="1" data-price=${price} class="form-control mb-3 product-quantities" >
                     </div>
                 </td>
                 <td class="product-price">${price}</td>

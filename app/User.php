@@ -44,9 +44,4 @@ class User extends Authenticatable
     {
         return asset('uploads/imageUsers/'.$this->image);
     }
-
-    //relation ship
-    public function orders(){
-        return $this->hasMany(Order::class);
-    }
 }
